@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Dashboard - NyayaSetu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h3>NyayaSetu - Lawyer Portal</h3>
+        </div>
+        <div class="profile">
+            <span id="lawyer-name"></span>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#bookings" class="tab-link active">My Bookings</a></li>
+                <li><a href="#availability" class="tab-link">Set Availability</a></li>
+                <li><a href="#profile" class="tab-link">Profile</a></li>
+                <li><a href="#reviews" class="tab-link">Reviews</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section id="bookings" class="tab-content active">
+                <h1>My Bookings</h1>
+                <div id="bookings-list"></div>
+            </section>
+
+            <section id="availability" class="tab-content">
+                <h1>Set Availability</h1>
+                <form id="availability-form">
+                    <select id="day-of-week" required>
+                        <option value="">Select Day</option>
+                        <option value="0">Sunday</option>
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                    </select>
+                    <input type="time" id="start-time" required>
+                    <input type="time" id="end-time" required>
+                    <button type="submit">Add Availability</button>
+                </form>
+                <div id="availability-list"></div>
+            </section>
+
+            <section id="profile" class="tab-content">
+                <h1>My Profile</h1>
+                <form id="profile-form">
+                    <input type="text" id="profile-name" placeholder="Name" required>
+                    <input type="tel" id="profile-phone" placeholder="Phone">
+                    <textarea id="profile-bio" placeholder="Bio"></textarea>
+                    <input type="number" id="profile-fees" placeholder="Consultation Fees" required>
+                    <input type="text" id="profile-location" placeholder="Location" required>
+                    <button type="submit">Update Profile</button>
+                </form>
+            </section>
+
+            <section id="reviews" class="tab-content">
+                <h1>My Reviews</h1>
+                <div id="reviews-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="lawyer.js"></script>
+</body>
+</html>

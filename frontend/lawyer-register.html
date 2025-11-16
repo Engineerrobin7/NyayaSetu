@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Registration - NyayaSetu</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="forms">
+            <div class="form-content">
+                <div class="signup-form">
+                    <div class="title">Lawyer Registration</div>
+                    <form id="lawyer-register-form">
+                        <div class="input-boxes">
+                            <input type="text" id="name" placeholder="Full Name" required>
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="password" id="password" placeholder="Password" required>
+                            <input type="tel" id="phone" placeholder="Phone Number">
+                            <input type="text" id="specialization" placeholder="Specialization" required>
+                            <input type="number" id="experience" placeholder="Years of Experience" required>
+                            <input type="text" id="location" placeholder="Location" required>
+                            <input type="number" id="fees" placeholder="Consultation Fees (₹)" required>
+                            <input type="text" id="bar-council-id" placeholder="Bar Council ID">
+                            <textarea id="bio" placeholder="Brief Bio"></textarea>
+                            <button type="submit">Register</button>
+                            <p>Already registered? <a href="lawyer-login.html">Login here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lawyer.js"></script>
+</body>
+</html>

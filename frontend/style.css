@@ -1,0 +1,529 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f8fb;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Font color */
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #7d2ae8, #5b13b9); /* Navbar background color */
+    padding: 15px 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white; /* Navbar text color */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo img {
+    vertical-align: middle;
+}
+
+.logo h3 {
+    display: inline;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white; /* Navbar link color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffd43b; /* Hover color */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Profile Button Styles */
+.profile-button {
+    background: #ffd43b; /* Button background color */
+    color: #333; /* Button text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px; /* Font size */
+    transition: background 0.3s; /* Transition effect */
+}
+
+.profile-button:hover {
+    background: #f0c36d; /* Button hover color */
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    background: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f4f8fb;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.sidebar li:hover {
+    background: linear-gradient(45deg, #7d2ae8, #5b13b9);
+}
+
+
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: #f4f8fb;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Headings */
+h2 {
+    color: #7d2ae8; /* Font color */
+    border-bottom: 2px solid #7d2ae8;
+    padding-bottom: 5px;
+    font-size: 28px;
+}
+
+/* Lawyer Categories */
+.lawyer-categories {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.lawyer-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(25% - 20px);
+    min-width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.lawyer-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.lawyer-card h3 {
+    color: #5b13b9;
+}
+
+.lawyer-card p {
+    color: #555;
+}
+
+.lawyer-card .start-chat {
+    display: inline-block;
+    margin-top: 10px;
+    background: linear-gradient(45deg, #7d2ae8, #5b13b9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.lawyer-card .start-chat:hover {
+    background: linear-gradient(45deg, #5b13b9, #7d2ae8);
+}
+
+/* Button Styles */
+button {
+    background: linear-gradient(45deg, #7d2ae8, #5b13b9);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #5b13b9, #7d2ae8);
+}
+
+/* Search Bar & Form Styling */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: linear-gradient(45deg, #7d2ae8, #5b13b9);
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 119, 182, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .tabs {
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+
+    .tab-content {
+        padding: 15px;
+    }
+
+    #search-form {
+        flex-direction: column;
+    }
+
+    #question-input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #send-button {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+.swiper {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+}
+/* Footer */
+footer {
+    text-align: center;
+    background: #7d2ae8;
+    color: white; /* Font color */
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* FAQ Section */
+.faq-container {
+    background: #7d2ae8;
+    color: #5b13b9; /* Font color */
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333; /* Font color */
+}
+
+.faq-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333; /* Font color */
+}
+
+.faq-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: #EFDCF9; /* Updated light color for icons */
+}
+
+.faq-icons i:hover {
+    transform: scale(1.2);
+    color: #7d2ae8; /* Change color on hover */
+}
+
+.faq {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #7d2ae8; /* Ensure question text is visible */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: none; /* Remove transition */
+}
+
+.faq-question:hover {
+    background: #EFDCF9; /* Updated light color */
+    color: #333; /* Font color */
+}
+
+.faq-question span {
+    font-size: 22px;
+    transition: none; /* Remove transition */
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background: #f4f8fb;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    color: #333; /* Font color */
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(45deg);
+}
+
+footer {
+    background: #222;
+    color: #333; /* Font color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 150px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: #7d2ae8; /* Link color */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    color: #5b13b9; /* Hover color */
+}
+
+.footer-bottom {
+    margin-top: 15px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Footer References Section */
+.footer-references {
+    background: #f4f8fb; /* Light background color */
+    padding: 20px 0;
+}
+
+.footer-references footer {
+    background: #f4f8fb; /* Light background color */
+    color: #7d2ae8; /* Font color */
+}
+
+.footer-references .footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+}
+
+.footer-references .footer-section {
+    margin: 10px;
+    min-width: 150px;
+}
+
+.footer-references .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333; /* Font color */
+}
+
+.footer-references .footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-references .footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-references .footer-section ul li a {
+    color: linear-gradient(45deg, #7d2ae8, #5b13b9); /* Link color */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-references .footer-section ul li a:hover {
+    color: linear-gradient(45deg, #5b13b9, #7d2ae8); /* Hover color */
+}
+
+.footer-references .footer-bottom {
+    margin-top: 15px;
+    border-top: 1px solid #ccc; /* Light border color */
+    padding-top: 10px;
+    font-size: 12px;
+    color: #333; /* Font color */
+    text-align: center;
+}
+
+.profile-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+}
+
+.profile-details p {
+    margin: 10px 0;
+}

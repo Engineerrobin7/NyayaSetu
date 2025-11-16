@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>NyayaSetu Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="script.js"></script>
+    <script defer src="user-features.js"></script>
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.jpeg" alt="NyayaSetu Logo" style="width: 50px; height: auto; vertical-align: middle;">
+            <h3 style="display: inline; margin-left: 10px; vertical-align: middle;">NyayaSetu</h3>
+        </div>
+        <div class="nav-links">
+            <a href="#consult-lawyers" class="tab-link">Consult Lawyers</a>
+            <a href="#legal-aid" class="tab-link">Legal Aid</a>
+            <a href="#document-assistance" class="tab-link">Document Assistance</a>
+            <a href="#case-status" class="tab-link">Case Status</a>
+        </div>
+        <div class="profile">
+            <span class="notification-bell">
+                <i class="fa-solid fa-bell fa-xl" style="color: #FFD43B;"></i>
+            </span>
+            <span class="user-icon" id="user-icon">
+                <i class="fa-solid fa-user fa-xl"></i>
+            </span>
+        </div>
+    </nav>
+
+    <div id="profile-section" class="profile-section" style="display: none;">
+        <h2>User Profile</h2>
+        <div class="profile-details">
+            <p><strong>Name:</strong> <span id="user-name">John Doe</span></p>
+            <p><strong>Email:</strong> <span id="user-email">john.doe@example.com</span></p>
+            <p><strong>Phone:</strong> <span id="user-phone">+1 234 567 890</span></p>
+            <p><strong>Password:</strong> <span id="user-password">********</span></p>
+        </div>
+        <button id="login-from-profile" class="profile-button" style="display: none;">Login</button>
+        <button id="logout-from-profile" class="profile-button">Logout</button>
+    </div>
+
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li><i class="fa-solid fa-phone fa-lg" style="color: #9d0b21;"></i> Ask a Lawyer Now</li>
+                <li><i class='fas fa-file-alt' style='font-size:24px'></i> Generate Legal Document</li>
+                <li><i class="fa-solid fa-magnifying-glass fa-lg"></i> Find a Lawyer</li>
+                <li><i class='fas fa-comments' style='font-size:24px'></i> AI Legal Assistant</li>
+            </ul>
+        </aside>
+
+
+        
+
+        <main class="main-content">
+            <div class="tabs">
+
+                <!--CONSULT-LAWYERS-->
+                <section id="consult-lawyers" class="tab-content">
+                   <center><h1>Consult Lawyers</h1></center>
+                    <div class="section">
+                        <h2>On-Demand Consultation</h2>
+                        <p>Get immediate legal advice via chat, call, or video.</p>
+                        <div class="lawyer-categories">
+                            <div class="lawyer-card">
+                                <h3>Property Lawyers</h3>
+                                <p>Expert advice on property disputes, land issues, and real estate transactions.</p>
+                                <a href="#property-lawyers" class="start-chat">Start Chat</a>
+                            </div>
+                            <div class="lawyer-card">
+                                <h3>Family Lawyers</h3>
+                                <p>Legal support for marriage disputes, divorce, and child custody matters.</p>
+                                <a href="#family-lawyers" class="start-chat">Start Chat</a>
+                            </div>
+                            <div class="lawyer-card">
+                                <h3>Criminal Lawyers</h3>
+                                <p>Consult for cases involving threats, blackmail, fraud, and legal defense.</p>
+                                <a href="#criminal-lawyers" class="start-chat">Start Chat</a>
+                            </div>
+                            <div class="lawyer-card">
+                                <h3>Banking & Financial Lawyers</h3>
+                                <p>Resolve disputes related to loans, banking fraud, and financial transactions.</p>
+                                <a href="#banking-lawyers" class="start-chat">Start Chat</a>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="property-lawyers" class="tab-content">
+                        <h2>Property Lawyers</h2>
+                        <ul>
+                            <li>Adv. Rajesh Sharma</li>
+                            <li>Adv. Sunita Verma</li>
+                            <li>Adv. Anil Kapoor</li>
+                        </ul>
+                    </section>
+    
+                    <section id="family-lawyers" class="tab-content">
+                        <h2>Family Lawyers</h2>
+                        <ul>
+                            <li>Adv. Neha Gupta</li>
+                            <li>Adv. Prakash Mehta</li>
+                            <li>Adv. Ritu Sharma</li>
+                        </ul>
+                    </section>
+    
+                    <section id="criminal-lawyers" class="tab-content">
+                        <h2>Criminal Lawyers</h2>
+                        <ul>
+                            <li>Adv. Vikram Singh</li>
+                            <li>Adv. Komal Yadav</li>
+                            <li>Adv. Arjun Patel</li>
+                        </ul>
+                    </section>
+    
+                    <section id="banking-lawyers" class="tab-content">
+                        <h2>Banking & Financial Lawyers</h2>
+                        <ul>
+                            <li>Adv. Rohit Das</li>
+                            <li>Adv. Priya Malhotra</li>
+                            <li>Adv. Sameer Joshi</li>
+                        </ul>
+                    </section>
+                    <div class="section">
+                        <h2>AI-Powered Legal Advice</h2>
+                        <p>A chatbox that provides basic legal guidance using AI.</p>
+                        <input type="text" id="question-input" placeholder="Ask a legal question...">
+                        <button id="send-button">Ask AI</button>
+                        <div id="conversation-display"></div>
+                    </div>
+                    <div id="lawyer-discovery-booking">
+                        <h2>Lawyer Discovery & Booking</h2>
+                        <p>Find the right lawyer for your case and book a consultation.</p>
+                        <div id="search-filter">
+                            <form id="search-form">
+                                <input type="text" id="keywords" placeholder="Keywords (e.g., lawyer name, legal issue)">
+                                <select id="specialization">
+                                    <option value="">Select Specialization</option>
+                                    <option value="criminal-law">Criminal Law</option>
+                                    <option value="family-law">Family Law</option>
+                                </select>
+                                <input type="text" id="location" placeholder="Location (e.g., city, zip code)">
+                                <button type="submit">Search</button>
+                                <div id="lawyers-list">
+                                    <h2>Available Lawyers</h2>
+                                    <div class="lawyer-container"></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="lawyer-results"></div>
+                        <div id="booking-modal" style="display: none;"></div>
+                    </div>
+                </section>
+                
+                <!--Legal AI-->
+                <section id="legal-aid" class="tab-content">
+                   <center> <h1>Legal Aid Services</h1></center>
+                    <div class="section">
+                        <h2>Low-Cost Consultation for Commom Issues</h2>
+                        <p>Find affordable legal consultations for coomon legal problems like:</p>
+                        <ul>
+                            <li>Landlord-tenant disputes</li>
+                            <li>Family law matters (divorce, child custody)</li>
+                            <li>Consumerprotection issues</li>
+                        </ul>
+                        <p><button id="low-cost-consultation-button">Find Low-Cost Consultation</button></p>
+                    </div>
+                    <div class="section">
+                        <h2>Pro Bono Lawyer Network</h2>
+                        <p>Access a network of lawyers who offer free legal services (pro bono) to those who qualify.</p>
+                        <p><button id="pro-bono-button">Explore Pro Bono Network</button></p>
+                    </div>
+                    <div class="section">
+                        <h2>Government and NGO Integration</h2>
+                        <p>Connect with government agencies and NGOs that provide legal aid and support:</p>
+                        <ul>
+                            <li>National Lega Services Authority (NALSA)</li>
+                            <li>State Legal Services Authorities (SLSAs)</li>
+                        </ul>
+                        <p>
+                            <button id="govt-ngo-button">View Resources</button>
+                        </p>
+                    </div>
+                </section>
+                
+                <!--DOCUMENT-ASSISTANCE-->
+                <section id="document-assistance" class="tab-content">
+                   <center> <h1>Document Assistance</h1></center>
+                    <div class="section">
+                        <h2>Document Templates</h2>
+                        <p>Find and download free legal document templates for common needs:</p>
+                        <ul>
+                            <li><a href="#">Lease Agreement</a></li>
+                            <li><a href="#">Power of Attorney</a></li>
+                            <li><a href="#">Non-Disclosure Agreement (NDA)</a></li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h2>AI Document Generator</h2>
+                        <p>Generate customized legal documents using our AI-powered tool:</p>
+                        <button id="ai-document-generator-button">Start AI Document Generator</button>
+                    </div>
+                    <div class="section">
+                        <h2>Document Review</h2>
+                        <p>Have your legal documents reviewed by experienced lawyers for accuracy and completeness.</p>
+                        <button id="document-review-button">Submit for Document Review</button>
+                    </div>
+                </section>
+
+                <!--CASE-STATUS-->
+                <section id="case-status" class="tab-content">
+                    <center><h1>Case Status</h1></center>
+                    <div class="section">
+                        <h2>Case Search</h2>
+                        <input type="text" id="search-bar" placeholder="Enter Case Number or name">
+                        <button id="search-button">Search</button>
+                    </div>
+                    <div class="section">
+                        <h2>Case Tracking</h2>
+                        <ul id="case-timeline">
+                            <li>Case Filed</li>
+                            <li class="active">Discovery</li>
+                            <li>Trial</li>
+                            <li>Judgement</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h2>Notifications</h2>
+                        <ul id="notifications">
+                            <li><h3>New Message from Lawyer</h3>
+                            <p>Your lawyer has sent you a new message regarding your case.</p>
+                        <span class="timestamp">10 minutes ago</span></li>
+                        <li><h3>Upcoming Court Date</h3>
+                        <p>You have a court hearing scheduled for 20 October, 2026 at 13:40 P.M. in Courtrrom 4</p>
+                    <span class="timestamp">2 days ago</span></li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image1.jpg" alt="Trademark">
+                    <h3>Trademark</h3>
+                    <p>⭐ 4.5</p>
+                    <p>🔘 Starting from Rs. 10500</p>
+                </div>
+            </div>
+    
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image2.jpg" alt="Sale Deed Drafting">
+                    <h3>Sale Deed Drafting</h3>
+                    <p>⭐ 4.6</p>
+                    <p>🔘 Starting from Rs. 4999</p>
+                </div>
+            </div>
+    
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image3.jpg" alt="Relinquishment Deed">
+                    <h3>Relinquishment Deed</h3>
+                    <p>⭐ 4.5</p>
+                    <p>🔘 Starting from Rs. 6499</p>
+                </div>
+            </div>
+    
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image4.jpg" alt="Commercial Lease Agreement">
+                    <h3>Commercial Lease Agreement</h3>
+                    <p>⭐ 4.7</p>
+                    <p>🔘 Starting from Rs. 5999</p>
+                </div>
+            </div>
+    
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image5.jpg" alt="Gift Deed">
+                    <h3>Gift Deed</h3>
+                    <p>⭐ 4.4</p>
+                    <p>🔘 Starting from Rs. 5999</p>
+                </div>
+            </div>
+    
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="image6.jpg" alt="Property Report">
+                    <h3>Property Report</h3>
+                    <p>⭐ 4.8</p>
+                    <p>🔘 Starting from Rs. 5999</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="faq-container">
+      <h2>Questions? We're here to help</h2><hr style="color: #EFDCF9;">
+      <p>Check out our FAQs or talk to a live customer care specialist by phone, chat, or email.</p>
+      
+
+      <div class="faq">
+          <div class="faq-item">
+              <button class="faq-question">What is online legal consultation? <span>+</span></button>
+              <div class="faq-answer">
+                  <p>Online legal consultation connects users with lawyers virtually using our platform.</p>
+              </div>
+          </div>
+  
+          <div class="faq">
+            <div class="faq-item">
+                <button class="faq-question">What is online legal consultation? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Online legal consultation connects users with lawyers virtually using our platform.</p>
+                </div>
+            </div>
+    
+            <div class="faq-item">
+                <button class="faq-question">Are your online lawyers qualified? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Yes, all lawyers on our platform are verified professionals.</p>
+                </div>
+            </div>
+    
+            <div class="faq-item">
+                <button class="faq-question">What happens if I don’t get a response from a lawyer? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>If you don’t receive a response, you can escalate the request to our support team.</p>
+                </div>
+            </div>
+    
+            <div class="faq-item">
+                <button class="faq-question">How do I start an online consultation? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>You can start by signing up and selecting a lawyer from our list.</p>
+                </div>
+            </div>
+    
+            <div class="faq-item">
+                <button class="faq-question">Is online consultation safe and secured? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Yes, we use end-to-end encryption to ensure security and privacy.</p>
+                </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<div class="footer-references">
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <ul>
+                    <li><a href="#">Property</a></li>
+                    <li><a href="#">Marriage & Divorce</a></li>
+                    <li><a href="#">Child Custody</a></li>
+                    <li><a href="#">Banking & Fraud</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="tel:+918448445049">+91-8448445049</a></li>
+                    <li><a href="mailto:info@nyayasetu.com">info@nyayasetu.com</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="faq-icons">
+                <i class="fas fa-phone"></i>
+                <i class="fas fa-envelope"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <p>© 2024-25 NyayaSetu | All Rights Reserved</p>
+            <p><small>Disclaimer: NyayaSetu is a platform connecting users with lawyers and does not provide legal advice.</small></p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

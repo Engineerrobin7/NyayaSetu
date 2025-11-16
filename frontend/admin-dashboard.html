@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - NyayaSetu</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+                <li><a href="#users">Users</a></li>
+                <li><a href="#lawyers">Lawyers</a></li>
+                <li><a href="#bookings">Bookings</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </aside>
+        
+        <main class="admin-main">
+            <section id="dashboard" class="admin-section active">
+                <h1>Dashboard Overview</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p id="total-users">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Lawyers</h3>
+                        <p id="total-lawyers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Bookings</h3>
+                        <p id="total-bookings">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Revenue</h3>
+                        <p id="total-revenue">₹0</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="users" class="admin-section">
+                <h1>Manage Users</h1>
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+            
+            <section id="lawyers" class="admin-section">
+                <h1>Manage Lawyers</h1>
+                <table id="lawyers-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Specialization</th>
+                            <th>Status</th>
+                            <th>Verified</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+            
+            <section id="bookings" class="admin-section">
+                <h1>All Bookings</h1>
+                <table id="bookings-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Lawyer</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
