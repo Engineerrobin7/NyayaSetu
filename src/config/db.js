@@ -6,8 +6,9 @@ const sequelize = new Sequelize(
     process.env.DB_PASS,
     {
         host: process.env.DB_HOST,
-        dialect: "postgres",
+        dialect: "mysql",
         logging: false,
+        port: process.env.DB_PORT || 3306,
     }
 );
 

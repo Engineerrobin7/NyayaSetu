@@ -3,28 +3,40 @@ const router = express.Router();
 const documentController = require('../controllers/documentController');
 const { userAuth } = require('../middleware/auth');
 const multer = require('multer');
-const multerS3 = require('multer-s3');
-const AWS = require('aws-sdk');
+const path = require('path');
+const fs = require('fs');
 
-const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION
+// Create uploads directory if it doesn't exist
+const uploadsDir = path.join(__dirname, '../../uploads/documents');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+// Local file storage configuration
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, uploadsDir);
+    },
+    filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}_${file.originalname}`;
+        cb(null, uniqueName);
+    }
 });
 
 const upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: process.env.AWS_BUCKET_NAME,
-        acl: 'public-read',
-        metadata: (req, file, cb) => {
-            cb(null, { fieldName: file.fieldname });
-        },
-        key: (req, file, cb) => {
-            cb(null, `documents/${Date.now()}_${file.originalname}`);
+    storage: storage,
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+    fileFilter: (req, file, cb) => {
+        const allowedTypes = /pdf|doc|docx|jpg|jpeg|png/;
+        const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = allowedTypes.test(file.mimetype);
+        
+        if (extname && mimetype) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Only PDF, DOC, DOCX, JPG, JPEG, PNG files are allowed!'));
         }
-    }),
-    limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
+    }
 });
 
 router.post('/upload', userAuth, upload.single('document'), documentController.uploadDocument);

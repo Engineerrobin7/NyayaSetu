@@ -7,19 +7,38 @@ const { Op } = require('sequelize');
 exports.adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log('🔐 Admin login attempt:', email);
+        
         const admin = await Admin.findOne({ where: { email } });
         
         if (!admin) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            console.log('❌ Admin not found:', email);
+            return res.status(401).json({ message: 'Invalid credentials - admin not found' });
         }
         
+        console.log('✅ Admin found:', admin.username);
+        console.log('🔑 Comparing passwords...');
+        
         const isMatch = await bcrypt.compare(password, admin.password);
+        console.log('🔑 Password match:', isMatch);
+        
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            console.log('❌ Password mismatch');
+            return res.status(401).json({ message: 'Invalid credentials - wrong password' });
         }
         
         const token = jwt.sign({ id: admin.id, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '24h' });
-        res.json({ token, admin: { id: admin.id, name: admin.name, email: admin.email } });
+        console.log('✅ Admin login successful');
+        
+        res.json({ 
+            token, 
+            admin: { 
+                id: admin.id, 
+                username: admin.username, 
+                email: admin.email,
+                role: admin.role 
+            } 
+        });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error: error.message });
     }

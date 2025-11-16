@@ -3,29 +3,29 @@ const sequelize = require("../config/db");
 
 const Lawyer = sequelize.define("Lawyer", {
     id: { 
-        type: DataTypes.UUID, 
-        defaultValue: DataTypes.UUIDV4, 
+        type: DataTypes.INTEGER, 
+        autoIncrement: true, 
         primaryKey: true 
     },
+    userId: { type: DataTypes.INTEGER, allowNull: true },
     name: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
-    phone: { type: DataTypes.STRING, allowNull: true },
-    specialization: { type: DataTypes.STRING, allowNull: false },
-    experience: { type: DataTypes.INTEGER, allowNull: false },
-    location: { type: DataTypes.STRING, allowNull: false },
-    fees: { type: DataTypes.INTEGER, allowNull: false },
+    phone: { type: DataTypes.STRING(20), allowNull: true },
+    specialization: { type: DataTypes.STRING, allowNull: true },
+    experience: { type: DataTypes.INTEGER, allowNull: true },
+    location: { type: DataTypes.STRING, allowNull: true },
+    consultationFee: { type: DataTypes.DECIMAL(10, 2), allowNull: true },
     bio: { type: DataTypes.TEXT, allowNull: true },
-    profileImage: { type: DataTypes.STRING, allowNull: true },
-    barCouncilId: { type: DataTypes.STRING, allowNull: true },
-    rating: { type: DataTypes.FLOAT, defaultValue: 0 },
-    totalReviews: { type: DataTypes.INTEGER, defaultValue: 0 },
+    profileImage: { type: DataTypes.STRING(500), allowNull: true },
+    licenseNumber: { type: DataTypes.STRING(100), allowNull: true },
+    rating: { type: DataTypes.DECIMAL(3, 2), defaultValue: 0 },
     isVerified: { type: DataTypes.BOOLEAN, defaultValue: false },
-    isActive: { type: DataTypes.BOOLEAN, defaultValue: true },
+    isApproved: { type: DataTypes.BOOLEAN, defaultValue: false },
 }, {
-    tableName: "lawyers",
+    tableName: "Lawyers",
     timestamps: true,
-    underscored: true
+    underscored: false
 });
 
 module.exports = Lawyer;

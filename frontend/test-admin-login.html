@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Admin Login</h1>
+    
+    <div class="info">
+        <strong>First, create admin in MySQL:</strong><br>
+        <code>
+            USE nyayasetu;<br>
+            DELETE FROM Admins WHERE email = 'admin@nyayasetu.com';<br>
+            INSERT INTO Admins (username, email, password, role, createdAt, updatedAt) <br>
+            VALUES ('admin', 'admin@nyayasetu.com', '$2b$10$aTsinroB7AHF6mkWfLcqkexcVOW.E0l4oFLA1Hw67ddfKjnx8unxG', 'superadmin', NOW(), NOW());
+        </code>
+    </div>
+    
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="email" value="admin@nyayasetu.com">
+    </div>
+    
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" id="password" value="admin123">
+    </div>
+    
+    <button onclick="testAdminLogin()">Test Admin Login</button>
+    <button onclick="checkAdminInDB()">Check if Admin Exists in DB</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        const API_URL = "http://localhost:5000";
+        
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = message;
+            resultDiv.className = type;
+            resultDiv.style.display = 'block';
+            console.log(message);
+        }
+        
+        async function testAdminLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            console.log('Testing admin login with:', { email, password });
+            
+            try {
+                const response = await fetch(`${API_URL}/api/admin/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                console.log('Response:', response.status, data);
+                
+                if (response.ok) {
+                    showResult(`✅ Admin login successful!<br>Token: ${data.token?.substring(0, 30)}...<br>Admin: ${JSON.stringify(data.admin)}`, 'success');
+                    localStorage.setItem('adminToken', data.token);
+                } else {
+                    showResult(`❌ Admin login failed!<br>Status: ${response.status}<br>Message: ${data.message || data.error}<br><br>Check:<br>1. Did you run the SQL command above?<br>2. Is the admin in the database?<br>3. Check server logs`, 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showResult(`❌ Network error: ${error.message}<br><br>Make sure backend is running on port 5000`, 'error');
+            }
+        }
+        
+        async function checkAdminInDB() {
+            showResult(`
+                <strong>To check if admin exists, run this in MySQL:</strong><br><br>
+                <code>
+                    USE nyayasetu;<br>
+                    SELECT * FROM Admins WHERE email = 'admin@nyayasetu.com';
+                </code><br><br>
+                <strong>You should see:</strong><br>
+                - username: admin<br>
+                - email: admin@nyayasetu.com<br>
+                - role: superadmin<br>
+                - password: $2b$10$aTsinroB7AHF6mkWfLcqkexcVOW.E0l4oFLA1Hw67ddfKjnx8unxG
+            `, 'info');
+        }
+    </script>
+</body>
+</html>

@@ -19,12 +19,24 @@ const availabilityRoutes = require("./routes/availability");
 console.log("🔍 Registering Routes...");
 
 const app = express();
-app.use(express.json());
 
+// CORS must be before other middleware
 app.use(cors({
-    origin: "http://127.0.0.1:3000",  
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:5500", "null"],  
     credentials: true
 }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Request logging
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`, req.body);
+    next();
+});
+
+// Serve uploaded files statically
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // ✅ Connect API Routes
 app.use("/api/auth", authRoutes);

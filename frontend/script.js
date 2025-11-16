@@ -72,8 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const endpoint = formType === "signup" ? "/api/auth/signup" : "/api/auth/login";
-        const userData = { email, password };
+        let endpoint, userData;
+        
+        if (formType === "signup") {
+            const name = document.getElementById("signup-name").value.trim();
+            if (!name) {
+                alert("⚠️ Please enter your name.");
+                return;
+            }
+            endpoint = "/api/auth/register";
+            userData = { name, email, password };
+        } else {
+            endpoint = "/api/auth/login";
+            userData = { email, password };
+        }
 
         try {
             const response = await fetch(`${API_URL}${endpoint}`, {
@@ -83,14 +95,23 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-            if (!response.ok) throw new Error(data.error || "Authentication failed");
+            
+            if (!response.ok) {
+                throw new Error(data.error || data.message || "Authentication failed");
+            }
 
-            alert(`✅ ${formType.toUpperCase()} successful!`);
-            localStorage.setItem("token", data.token);
-            window.location.href = "/frontend/dashboard.html";
+            alert(`✅ ${formType === "signup" ? "Registration" : "Login"} successful!`);
+            
+            if (data.token) {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("userName", data.user?.name || name || "User");
+                localStorage.setItem("userEmail", email);
+            }
+            
+            window.location.href = "dashboard.html";
         } catch (error) {
             console.error("❌ Auth Error:", error);
-            alert("❌ Authentication failed. Please try again.");
+            alert(`❌ ${error.message}`);
         }
     }
 
